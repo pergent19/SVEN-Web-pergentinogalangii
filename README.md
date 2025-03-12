@@ -11,8 +11,6 @@ This repository contains both the frontend and backend of the SVEN-Web project, 
 - [Running the Application](#running-the-application)
   - [Frontend](#frontend)
   - [Backend](#backend)
-- [Troubleshooting](#troubleshooting)
-- [License](#license)
 
 ---
 
@@ -48,7 +46,9 @@ This repository contains both the frontend and backend of the SVEN-Web project, 
 
 4. **Configure the API URL for communication with the backend**:
     Create a .env file in the root of the frontend project and add the following variable:
+    ```env
     VITE_API_URL=http://localhost:5000/api
+
     Replace http://localhost:5000 with your backend URL if necessary.
 
 
@@ -68,6 +68,7 @@ This repository contains both the frontend and backend of the SVEN-Web project, 
 
 4. **Set up the environment variables**:
     Create a .env file in the root of the backend project with the following variables:
+    ```env
     PG_USER=postgres
     PG_HOST=localhost
     PG_DATABASE=booking_db
@@ -77,10 +78,10 @@ This repository contains both the frontend and backend of the SVEN-Web project, 
 
 ### Running the Application 
 
-### Start the Backend
+# Start the Backend
 The backend should be running on: http://localhost:5000.
 
-### Start the Frontend
+# Start the Frontend
 The frontend should be running on: http://localhost:5173/.
 
 Both the frontend and backend should now be connected, allowing the frontend to communicate with the backend via the API.
