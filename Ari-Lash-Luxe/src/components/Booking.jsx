@@ -6,6 +6,28 @@ import CheckboxGroup from "./ui/CheckboxGroup";
 import { createBooking } from "../service/api"
 import Modal from "./Modal/modal";
 
+
+const radioOptionFrequency = [
+  { label: "Recurring", value: "recurring" },
+  { label: "One Time", value: "one time" },
+];
+
+const radioOptionTime = [
+  { label: "Morning", value: "morning" },
+  { label: "Afternoon", value: "afternoon" },
+  { label: "Evening", value: "evening" },
+];
+
+const checkboxOptions = [
+  { label: "Mon", value: "monday" },
+  { label: "Tue", value: "tuesday" },
+  { label: "Wed", value: "wednesday" },
+  { label: "Thu", value: "thursday" },
+  { label: "Fri", value: "friday" },
+  { label: "Sat", value: "saturday" },
+  { label: "Sun", value: "sunday" },
+];
+
 export default function Booking() {
   const [frequency, setFrequency] = useState("");
   const [startDate, setStartDate] = useState("");
@@ -17,28 +39,6 @@ export default function Booking() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   
-  const radioOptionFrequency = [
-    { label: "Recurring", value: "recurring" },
-    { label: "One Time", value: "one time" },
-  ];
-
-  const radioOptionTime = [
-    { label: "Morning", value: "morning" },
-    { label: "Afternoon", value: "afternoon" },
-    { label: "Evening", value: "evening" },
-  ];
-
-  const checkboxOptions = [
-    { label: "Mon", value: "monday" },
-    { label: "Tue", value: "tuesday" },
-    { label: "Wed", value: "wednesday" },
-    { label: "Thu", value: "thursday" },
-    { label: "Fri", value: "friday" },
-    { label: "Sat", value: "saturday" },
-    { label: "Sun", value: "sunday" },
-  ];
-
-
   const handleRadioChangeFrequency = (e) => {
     setFrequency(e.target.value);
   };
@@ -77,15 +77,13 @@ export default function Booking() {
   
     // Prepare the booking data
     const bookingData = { frequency, startDate, days, time, notes };
-    console.log("Booking Data to send:", bookingData);
-  
+
     setLoading(true);
     try {
       // Try to create the booking
       await createBooking(bookingData);
       setMessage("Booking successfully created!");
       setIsModalOpen(true);
-      // Reset the form fields
       setFrequency("");
       setStartDate("");
       setDays([]);
@@ -96,11 +94,11 @@ export default function Booking() {
       if (error.response) {
         // Extract error messages from the response data
         const errorMessages = error.response.data.errors.map((err) => err.msg);
-        setMessage(`Failed to create booking. Errors: ${errorMessages.join(', ')}`);
+        setMessage("Failed to create booking.");
         setIsModalOpen(true);
       } else {
         // Handle other types of errors (network issues, etc.)
-        setMessage(`Failed to create booking. Please try again. ${error.message}`);
+        setMessage("Failed to create booking. Please try again.");
         setIsModalOpen(true);
       }
     } finally {
@@ -110,7 +108,7 @@ export default function Booking() {
 
   const handleCloseModal = () => {
     setIsModalOpen(false);
-    setMessage(""); // Reset message after closing modal
+    setMessage("");
   };
 
   return (
@@ -146,8 +144,6 @@ export default function Booking() {
             We'll take your experience to the next level
           </h2>
 
-          {/* {message && <p className="text-center text-white">{message}</p>} */}
-
           <form className="space-y-8" onSubmit={handleSubmit}>
             <div className="flex flex-wrap gap-5">
               {/* Frquency */}
@@ -172,7 +168,6 @@ export default function Booking() {
                 />
               </div>
             </div>
-
             {/* Days */}
             <CheckboxGroup
               label="Select Days"
@@ -181,7 +176,6 @@ export default function Booking() {
               value={days}
               onChange={handleCheckboxChange}
             />
-
             {/* Time */}
             <RadioGroup
               label="Select Time"
@@ -189,7 +183,7 @@ export default function Booking() {
               value={time}
               onChange={handleRadioChangeTime}
             />
-
+            {/* Notes */}
             <div>
               <label className="text-xl font-medium text-white">Notes</label>
               <textarea
@@ -199,7 +193,6 @@ export default function Booking() {
                 rows="4"
               ></textarea>
             </div>
-
             {/* Submit Button */}
             <div className="flex justify-center mt-6">
               <button
@@ -213,7 +206,7 @@ export default function Booking() {
           </form>
         </div>
       </div>
-
+      {/* Modal */}
       <Modal isOpen={isModalOpen} onClose={handleCloseModal}>
         <div className="modal-message">
           <p>{message}</p>

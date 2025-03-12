@@ -20,7 +20,6 @@ const { validationResult } = require('express-validator');
 const createBookingHandler = async (req, res) => {
   
   const errors = validationResult(req);
-  console.log(errors);
   if (!errors.isEmpty()) {
     return res.status(400).json({ errors: errors.array() });
   }
@@ -28,7 +27,7 @@ const createBookingHandler = async (req, res) => {
   const { frequency, start_date, days, time, notes } = req.body;
   try {
     const newBooking = await createBooking(frequency, start_date, days, time, notes);
-    console.log(newBooking);
+
     res.status(201).json({message: "Successfully Created",newBooking});
   } catch (error) {
     console.error(error);

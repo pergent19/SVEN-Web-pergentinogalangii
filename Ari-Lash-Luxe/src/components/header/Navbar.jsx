@@ -1,10 +1,13 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, lazy, Suspense } from "react";
 import { Dialog, DialogPanel } from "@headlessui/react";
-import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+// import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { Link } from "react-scroll";
 import logo from "@/assets/images/logo.png";
+
+const Bars3Icon = lazy(() => import("@heroicons/react/24/outline/Bars3Icon"));
+const XMarkIcon = lazy(() => import("@heroicons/react/24/outline/XMarkIcon"));
 
 const navigation = [
   { name: "ABOUT US", href: "gallery" },
@@ -34,7 +37,11 @@ export default function Navbar() {
               className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
             >
               <span className="sr-only">Open main menu</span>
-              <Bars3Icon aria-hidden="true" className="size-6" />
+
+              <Suspense fallback={<div>Loading...</div>}>
+                <Bars3Icon aria-hidden="true" className="size-6" />
+              </Suspense>
+
             </button>
           </div>
           <div className="hidden lg:flex lg:gap-x-12">
@@ -69,7 +76,11 @@ export default function Navbar() {
                 className="-m-2.5 rounded-md p-2.5 text-gray-700"
               >
                 <span className="sr-only">Close menu</span>
-                <XMarkIcon aria-hidden="true" className="size-6" />
+
+                <Suspense fallback={<div>Loading...</div>}>
+                  <XMarkIcon aria-hidden="true" className="size-6" />
+                </Suspense>
+                
               </button>
             </div>
             <div className="mt-6 flow-root">

@@ -19,7 +19,7 @@ const RadioGroup = ({ label, options, name, onChange, value }) => {
               />
               <label
                 htmlFor={option.value}
-                className="cursor-pointer px-6 py-1 text-sm font-medium text-gray-700 bg-white border border-white transition-colors duration-300 ease-in-out peer-checked:bg-[#C5A43B] peer-checked:text-white hover:bg-blue-300 peer-checked:border-transparent"
+                className="cursor-pointer px-6 py-1 text-sm font-medium text-gray-700 bg-white border border-white transition-colors duration-300 ease-in-out peer-checked:bg-[#C5A43B] peer-checked:text-white hover:bg-[#e9e7e1] peer-checked:border-transparent"
               >
                 {option.label}
               </label>
