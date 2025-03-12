@@ -1,4 +1,4 @@
-# SVEN-Web Project
+# SVEN-Web Project - Pergentino Galang II
 
 This repository contains both the frontend and backend of the SVEN-Web project, providing a web-based solution to manage bookings.
 
