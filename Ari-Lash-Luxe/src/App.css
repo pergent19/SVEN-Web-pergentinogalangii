@@ -1,0 +1,21 @@
+@import "tailwindcss";
+
+.logo {
+  width: 147px;
+}
+
+.landing-bg {
+  height: 100vh;
+}
+
+.inter-bold {
+  font-family: "Inter", serif;
+  font-style: normal;
+  font-weight: 700;
+}
+
+.romanesco-regular {
+  font-family: "Romanesco", serif;
+  font-weight: 200;
+  font-style: normal;
+}
