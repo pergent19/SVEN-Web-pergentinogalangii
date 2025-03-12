@@ -78,10 +78,10 @@ This repository contains both the frontend and backend of the SVEN-Web project, 
 
 ### Running the Application 
 
-# Start the Backend
+## Start the Backend
 The backend should be running on: http://localhost:5000.
 
-# Start the Frontend
+## Start the Frontend
 The frontend should be running on: http://localhost:5173/.
 
 Both the frontend and backend should now be connected, allowing the frontend to communicate with the backend via the API.
